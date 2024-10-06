@@ -165,3 +165,8 @@ body {
   color: red;
   font-weight: bold;
 }
+
+.representative {
+  background-color: #fdf3ea;
+  border-radius: 2px;
+}

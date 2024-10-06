@@ -231,19 +231,37 @@
   <div class="container is-max-desktop">
     <!-- NC Phenomenon. -->
     <h2 class="title is-3">NC Phenomenon</h2>
+    <div class="content has-text-justified">
+      <p>
+        Neural Collapse (NC) is a clustering phenomenon which was firstly observed 
+        by <a href="https://arxiv.org/abs/2008.08186">Papyan et al. (2020)</a> . 
+        It illustrates an elegant geometric structure of the last-layer feature and 
+        classifier for a well-trained model in classification tasks.
+        In particular, NC refers to a set of four manifestations 
+        in the representation space (i.e., the penultimate layer):
+        <ol type="1" style="list-style-type: none;">
+          <li><b>(NC1)</b> Variability collapse: feature vectors of the same class converge to their class mean.</li>
+          <li><b>(NC2)</b> Simplex ETF: globally-centered class mean vectors converge to a 
+            geometric configuration known as Simplex Equiangular Tight Frame (ETF), i.e., 
+            mean vectors have the same lengths and form equal angles pairwise.</li>
+          <li><b>(NC3)</b> Self-duality: the class means and the last-layer linear classifiers are self-dual.</li>
+          <li><b>(NC4)</b> Nearest class-center prediction: the network predicts the class whose mean vector has the minimum Euclidean distance to the feature of the test image.</li>
+        </ol>
+      </p>
+    </div>
     
     <!-- Simulated Eval. -->
     <h3 class="title is-4">Evaluation on Simulation</h3>
-    <div class="content has-text-justified">
+    <!-- <div class="content has-text-justified">
       <p>
-        Write some description here.
+        text here.
       </p>
-    </div>
+    </div> -->
     <div class="columns is-centered">
       <div class="column is-full-width">
           <div class="content is-4 has-text-centered">
             <img src="static/images/sim_domain_18_seed_81.webp" width="70%" alt="sim_sample_video">
-            <p>Evaluation Video</p>
+            <p>Evaluation example demo for the last (300<sup>th</sup>) training epoch</p>
           </div>
         <!--/ Simulated Eval. -->
       </div>
@@ -251,7 +269,7 @@
       <div class="column is-full-width">
         <div class="content is-4 has-text-centered">
           <img src="./static/images/sim_domain18_resnet_diffusion_score.png" width="438" alt="sim_score">
-          <p>Evaluation Score</p>
+          <p>Evaluation score w.r.t. training epoches</p>
         </div>
       </div>
     </div>
@@ -260,7 +278,14 @@
     <h3 class="title is-4">NC Performance Metrics</h3>
     <div class="content has-text-justified">
       <p>
-        Write some text here.
+        We evaluate <b>(NC1)</b> using the <em>class-distance normalized variance</em> 
+        (CDNV) metric that depends on the ratio of within-class to between-class variabilities.
+        We evaluate <b>(NC2)</b> using the standard deviation of the angles and lengths spanned by
+        cluster mean vectors. We do not evaluate <b>(NC3)</b> and <b>(NC4)</b> because they 
+        require a linear classifier from the representation space to the output, which does 
+        not hold in our vision-based control setup. For comprehensive details, including 
+        the mathematical definitions of all three metrics, please refer to Section 3 of 
+        the paper.
       </p>
     </div>
     <div class="columns is-centered">
@@ -294,9 +319,11 @@
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Real-World Validation. -->
+    <h2 class="title is-3">Real-World Validation</h2>
+
+    <h3 class="title is-4">Example Evaluation Result</h3>
     <div class="columns is-centered">
       <div class="column">
-        <h2 class="title is-3">Real-World Validation</h2>
         <div class="content is-centered has-text-centered">
           <img src="./static/images/real_100demos_nc_encouraged_eval_demo_8_traj.png" height="100%" alt="real_sample_nc_encouraged_traj">
           <p>(Ours) Real-world evaluation trajectory of test 8 for <b>NC-pretrained</b> policy trained under 100 demos.</p>
@@ -317,7 +344,7 @@
                     type="video/mp4">
           </video>
           <p>
-            (Ours) Real-world evaluation video of test 8 for <b>NC-pretrained</b> policy trained under 100 demos.
+            (Ours) Real-world evaluation video of test 8 for <b>NC-pretrained</b> policy trained under 100 demos. <span class="green-text">Success</span>.
           </p>
         </div>
       </div>
@@ -329,7 +356,7 @@
                     type="video/mp4">
           </video>
           <p>
-            Real-world evaluation video of test 8 for <b>baseline</b> policy trained under 100 demos.
+            Real-world evaluation video of test 8 for <b>baseline</b> policy trained under 100 demos. <span class="red-text">Failure</span>.
           </p>
         </div>
       </div>
@@ -337,535 +364,563 @@
     <!-- Real-World Example Video. -->
 
     <!-- Real-World All Videos. -->
-    <h3 class="title is-4">Check All Real-world Evalutaion Results:</h3>
+    <h3 class="title is-4">
+      Check all real-world evalutaion results (by clicking the title):
+    </h3>
+    <div class="content has-text-justified">
+      <p>
+        Our NC-pretrained policy demonstrates consistent and superior performance compared 
+        to the baseline policy. It successfully completes all tests that the baseline policy 
+        manages to accomplish, while also succeeding in a subset of tests (<span style="background-color: #fdf3ea;">highlighted in background</span>) 
+        where the baseline fails. The results showcase a monotonic improvement 
+        in performance, underscoring the efficacy of our approach across various test scenarios.
+      </p>
+    </div>
+    
 
     <h4 class="title is-5">
-      <a data-bs-toggle="collapse" href="#nc-100-all">
-        (Ours) NC-pretrained policy trained under 100 demos (8 out of 10)
+      <a data-bs-toggle="collapse" href="#100-all">
+        (Ours) NC-pretrained (8 out of 10) vs. Baseline (5 out of 10) policy trained under 100 demos
       </a>
     </h4>
-    
-    <div class="collapse" id="nc-100-all" style="margin-bottom: 20px;">
-      <div class="columns is-centered">
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_100demos_nc_encoraged_0" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_0.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 0: <span class="green-text">Success</span>.
-            </p>
-          </div>
-        </div>
 
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_100demos_nc_encoraged_1" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_1.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 1: <span class="green-text">Success</span>.
-            </p>
+    <!-- 100demos -->
+    <div class="collapse" id="100-all" style="margin-bottom: 40px;">
+      <div class="columns">
+          <!-- test0 100demos -->
+          <div class="column is-centered">
+            <div class="content has-text-centered">
+              <video id="real_eval_100demos_nc_encoraged_0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_0.mp4"
+                        type="video/mp4">
+              </video>
+              <p>
+                NC-pretrained Policy Test 0: <span class="green-text">Success</span>.
+              </p>
+            </div>
           </div>
-        </div>  
+          <div class="column is-centered" style="margin-right: 15px;">
+            <div class="content has-text-centered">
+              <video id="real_eval_100demos_baseline_0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_0.mp4"
+                        type="video/mp4">
+              </video>
+              <p>
+                Baseline Policy Test 0: <span class="green-text">Success</span>.
+              </p>
+            </div>
+          </div>
+          <!-- test0 100demos -->
 
-        <div class="column">
+          <!-- test1 100demos -->
+          <div class="column is-centered" style="margin-left: 15px;">
+            <div class="content has-text-centered">
+              <video id="real_eval_100demos_nc_encoraged_1" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_1.mp4"
+                        type="video/mp4">
+              </video>
+              <p>
+                NC-pretrained Policy Test 1: <span class="green-text">Success</span>.
+              </p>
+            </div>
+          </div> 
+          <div class="column is-centered">
+            <div class="content has-text-centered">
+              <video id="real_eval_100demos_baseline_1" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_1.mp4"
+                        type="video/mp4">
+              </video>
+              <p>
+                Baseline Policy Test 1: <span class="green-text">Success</span>.
+              </p>
+            </div>
+          </div>
+          <!-- test1 100demos -->
+      </div>
+
+      <div class="columns">
+        <!-- test2 100demos -->
+        <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_nc_encoraged_2" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_2.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 2: <span class="red-text">Failure</span>.
+              NC-pretrained Policy Test 2: <span class="red-text">Failure</span>.
             </p>
           </div>
         </div>
-
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_100demos_nc_encoraged_3" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_3.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 3: <span class="green-text">Success</span>.
-            </p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_100demos_nc_encoraged_4" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_4.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 4: <span class="green-text">Success</span>.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="columns is-centered">
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_100demos_nc_encoraged_5" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_5.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 5: <span class="green-text">Success</span>.
-            </p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_100demos_nc_encoraged_6" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_6.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 6: <span class="red-text">Failure</span>.
-            </p>
-          </div>
-        </div>  
-
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_100demos_nc_encoraged_7" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_7.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 7: <span class="green-text">Success</span>.
-            </p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_100demos_nc_encoraged_8" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_8.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 8: <span class="green-text">Success</span>.
-            </p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_100demos_nc_encoraged_9" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_9.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 9: <span class="green-text">Success</span>.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h4 class="title is-5">
-      <a data-bs-toggle="collapse" href="#baseline-100-all">
-        Baseline policy trained under 100 demos (5 out of 10)
-      </a>
-    </h4>
-
-    <div class="collapse" id="baseline-100-all" style="margin-bottom: 20px;">
-      <div class="columns is-centered">
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_100demos_baseline_0" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_0.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 0: <span class="green-text">Success</span>.
-            </p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_100demos_baseline_1" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_1.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 1: <span class="green-text">Success</span>.
-            </p>
-          </div>
-        </div>  
-
-        <div class="column">
+        <div class="column is-centered" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_2" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_2.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 2: <span class="red-text">Failure</span>.
+              Baseline Policy Test 2: <span class="red-text">Failure</span>.
             </p>
           </div>
         </div>
+        <!-- test2 100demos -->
 
-        <div class="column">
+        <!-- test3 100demos -->
+        <div class="column is-centered" style="margin-left: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_100demos_nc_encoraged_3" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_3.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 3: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div> 
+        <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_3" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_3.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 3: <span class="green-text">Success</span>.
+              Baseline Policy Test 3: <span class="green-text">Success</span>.
             </p>
           </div>
         </div>
+        <!-- test3 100demos -->
+      </div>
 
-        <div class="column">
+      <div class="columns">
+        <!-- test4 100demos -->
+        <div class="column is-centered">
+          <div class="content has-text-centered">
+            <video id="real_eval_100demos_nc_encoraged_4" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_4.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 4: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div>
+        <div class="column is-centered" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_4" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_4.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 4: <span class="green-text">Success</span>.
+              Baseline Policy Test 4: <span class="green-text">Success</span>.
             </p>
           </div>
         </div>
-      </div>
+        <!-- test4 100demos -->
 
-      <div class="columns is-centered">
-        <div class="column">
+        <!-- test5 100demos -->
+        <div class="column is-centered representative" style="margin-left: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_100demos_nc_encoraged_5" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_5.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 5: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div> 
+        <div class="column is-centered representative">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_5" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_5.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 5: <span class="red-text">Failure</span>.
+              Baseline Policy Test 5: <span class="red-text">Failure</span>.
             </p>
           </div>
         </div>
+        <!-- test5 100demos -->
+      </div>
 
-        <div class="column">
+      <div class="columns">
+        <!-- test6 100demos -->
+        <div class="column is-centered">
+          <div class="content has-text-centered">
+            <video id="real_eval_100demos_nc_encoraged_6" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_6.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 6: <span class="red-text">Failure</span>.
+            </p>
+          </div>
+        </div>
+        <div class="column is-centered" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_6" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_6.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 6: <span class="red-text">Failure</span>.
+              Baseline Policy Test 6: <span class="red-text">Failure</span>.
             </p>
           </div>
-        </div>  
+        </div>
+        <!-- test6 100demos -->
 
-        <div class="column">
+        <!-- test7 100demos -->
+        <div class="column is-centered" style="margin-left: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_100demos_nc_encoraged_7" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_7.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 7: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div> 
+        <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_7" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_7.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 7: <span class="green-text">Success</span>.
+              Baseline Policy Test 7: <span class="green-text">Success</span>.
             </p>
           </div>
         </div>
+        <!-- test7 100demos -->
+      </div>
 
-        <div class="column">
+      <div class="columns">
+        <!-- test8 100demos -->
+        <div class="column is-centered representative">
+          <div class="content has-text-centered">
+            <video id="real_eval_100demos_nc_encoraged_8" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_8.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 8: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div>
+        <div class="column is-centered representative" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_8" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_8.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 8: <span class="red-text">Failure</span>.
+              Baseline Policy Test 8: <span class="red-text">Failure</span>.
             </p>
           </div>
         </div>
+        <!-- test8 100demos -->
 
-        <div class="column">
+        <!-- test9 100demos -->
+        <div class="column is-centered representative" style="margin-left: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_100demos_nc_encoraged_9" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_9.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 9: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div> 
+        <div class="column is-centered representative">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_9" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_9.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 9: <span class="red-text">Failure</span>.
+              Baseline Policy Test 9: <span class="red-text">Failure</span>.
             </p>
           </div>
         </div>
+        <!-- test9 100demos -->
       </div>
     </div>
+    <!-- 100demos -->
 
     <h4 class="title is-5">
-      <a data-bs-toggle="collapse" href="#nc-50-all">
-        (Ours) NC-pretrained policy trained under 50 demos (4 out of 10)
+      <a data-bs-toggle="collapse" href="#50-all">
+        (Ours) NC-pretrained (4 out of 10) vs. Baseline (2 out of 10) policy trained under 50 demos
       </a>
     </h4>
-    
-    <div class="collapse" id="nc-50-all" style="margin-bottom: 20px;">
-      <div class="columns is-centered">
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_50demos_nc_encoraged_0" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_0.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 0: <span class="green-text">Success</span>.
-            </p>
-          </div>
-        </div>
 
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_50demos_nc_encoraged_1" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_1.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 1: <span class="green-text">Success</span>.
-            </p>
+    <!-- 50demos -->
+    <div class="collapse" id="50-all" style="margin-bottom: 20px;">
+      <div class="columns">
+          <!-- test0 50demos -->
+          <div class="column is-centered">
+            <div class="content has-text-centered">
+              <video id="real_eval_50demos_nc_encoraged_0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_0.mp4"
+                        type="video/mp4">
+              </video>
+              <p>
+                NC-pretrained Policy Test 0: <span class="green-text">Success</span>.
+              </p>
+            </div>
           </div>
-        </div>  
+          <div class="column is-centered" style="margin-right: 15px;">
+            <div class="content has-text-centered">
+              <video id="real_eval_50demos_baseline_0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_0.mp4"
+                        type="video/mp4">
+              </video>
+              <p>
+                Baseline Policy Test 0: <span class="green-text">Success</span>.
+              </p>
+            </div>
+          </div>
+          <!-- test0 50demos -->
 
-        <div class="column">
+          <!-- test1 50demos -->
+          <div class="column is-centered representative" style="margin-left: 15px;">
+            <div class="content has-text-centered">
+              <video id="real_eval_50demos_nc_encoraged_1" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_1.mp4"
+                        type="video/mp4">
+              </video>
+              <p>
+                NC-pretrained Policy Test 1: <span class="green-text">Success</span>.
+              </p>
+            </div>
+          </div> 
+          <div class="column is-centered representative">
+            <div class="content has-text-centered">
+              <video id="real_eval_50demos_baseline_1" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_1.mp4"
+                        type="video/mp4">
+              </video>
+              <p>
+                Baseline Policy Test 1: <span class="red-text">Failure</span>.
+              </p>
+            </div>
+          </div>
+          <!-- test1 50demos -->
+      </div>
+
+      <div class="columns">
+        <!-- test2 50demos -->
+        <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_nc_encoraged_2" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_2.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 2: <span class="red-text">Failure</span>.
+              NC-pretrained Policy Test 2: <span class="red-text">Failure</span>.
             </p>
           </div>
         </div>
-
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_50demos_nc_encoraged_3" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_3.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 3: <span class="red-text">Failure</span>.
-            </p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_50demos_nc_encoraged_4" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_4.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 4: <span class="red-text">Failure</span>.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="columns is-centered">
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_50demos_nc_encoraged_5" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_5.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 5: <span class="red-text">Failure</span>.
-            </p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_50demos_nc_encoraged_6" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_6.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 6: <span class="red-text">Failure</span>.
-            </p>
-          </div>
-        </div>  
-
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_50demos_nc_encoraged_7" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_7.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 7: <span class="green-text">Success</span>.
-            </p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_50demos_nc_encoraged_8" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_8.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 8: <span class="red-text">Failure</span>.
-            </p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_50demos_nc_encoraged_9" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_9.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 9: <span class="green-text">Success</span>.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h4 class="title is-5">
-      <a data-bs-toggle="collapse" href="#baseline-50-all">
-        Baseline policy trained under 50 demos (2 out of 10)
-      </a>
-    </h4>
-
-    <div class="collapse" id="baseline-50-all" style="margin-bottom: 20px;">
-      <div class="columns is-centered">
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_50demos_baseline_0" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_0.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 0: <span class="green-text">Success</span>.
-            </p>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="content has-text-centered">
-            <video id="real_eval_50demos_baseline_1" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_1.mp4"
-                      type="video/mp4">
-            </video>
-            <p>
-              Test 1: <span class="red-text">Failure</span>.
-            </p>
-          </div>
-        </div>  
-
-        <div class="column">
+        <div class="column is-centered" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_2" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_2.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 2: <span class="red-text">Failure</span>.
+              Baseline Policy Test 2: <span class="red-text">Failure</span>.
             </p>
           </div>
         </div>
+        <!-- test2 50demos -->
 
-        <div class="column">
+        <!-- test3 50demos -->
+        <div class="column is-centered" style="margin-left: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_50demos_nc_encoraged_3" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_3.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 3: <span class="red-text">Failure</span>.
+            </p>
+          </div>
+        </div> 
+        <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_3" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_3.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 3: <span class="red-text">Failure</span>.
+              Baseline Policy Test 3: <span class="red-text">Failure</span>.
             </p>
           </div>
         </div>
+        <!-- test3 50demos -->
+      </div>
 
-        <div class="column">
+      <div class="columns">
+        <!-- test4 50demos -->
+        <div class="column is-centered">
+          <div class="content has-text-centered">
+            <video id="real_eval_50demos_nc_encoraged_4" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_4.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 4: <span class="red-text">Failure</span>.
+            </p>
+          </div>
+        </div>
+        <div class="column is-centered" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_4" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_4.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 4: <span class="red-text">Failure</span>.
+              Baseline Policy Test 4: <span class="red-text">Failure</span>.
             </p>
           </div>
         </div>
-      </div>
+        <!-- test4 50demos -->
 
-      <div class="columns is-centered">
-        <div class="column">
+        <!-- test5 50demos -->
+        <div class="column is-centered" style="margin-left: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_50demos_nc_encoraged_5" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_5.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 5: <span class="red-text">Failure</span>.
+            </p>
+          </div>
+        </div> 
+        <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_5" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_5.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 5: <span class="red-text">Failure</span>.
+              Baseline Policy Test 5: <span class="red-text">Failure</span>.
             </p>
           </div>
         </div>
+        <!-- test5 50demos -->
+      </div>
 
-        <div class="column">
+      <div class="columns">
+        <!-- test6 50demos -->
+        <div class="column is-centered">
+          <div class="content has-text-centered">
+            <video id="real_eval_50demos_nc_encoraged_6" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_6.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 6: <span class="red-text">Failure</span>.
+            </p>
+          </div>
+        </div>
+        <div class="column is-centered" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_6" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_6.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 6: <span class="red-text">Failure</span>.
+              Baseline Policy Test 6: <span class="red-text">Failure</span>.
             </p>
           </div>
-        </div>  
+        </div>
+        <!-- test6 50demos -->
 
-        <div class="column">
+        <!-- test7 50demos -->
+        <div class="column is-centered representative" style="margin-left: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_50demos_nc_encoraged_7" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_7.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 7: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div> 
+        <div class="column is-centered representative">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_7" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_7.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 7: <span class="red-text">Failure</span>.
+              Baseline Policy Test 7: <span class="red-text">Failure</span>.
             </p>
           </div>
         </div>
+        <!-- test7 50demos -->
+      </div>
 
-        <div class="column">
+      <div class="columns">
+        <!-- test8 50demos -->
+        <div class="column is-centered">
+          <div class="content has-text-centered">
+            <video id="real_eval_50demos_nc_encoraged_8" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_8.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 8: <span class="red-text">Failure</span>.
+            </p>
+          </div>
+        </div>
+        <div class="column is-centered" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_8" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_8.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 8: <span class="red-text">Failure</span>.
+              Baseline Policy Test 8: <span class="red-text">Failure</span>.
             </p>
           </div>
         </div>
+        <!-- test8 50demos -->
 
-        <div class="column">
+        <!-- test9 50demos -->
+        <div class="column is-centered" style="margin-left: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_50demos_nc_encoraged_9" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_9.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 9: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div> 
+        <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_9" autoplay controls muted loop playsinline height="100%">
               <source src="./static/videos/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_9.mp4"
                       type="video/mp4">
             </video>
             <p>
-              Test 9: <span class="green-text">Success</span>.
+              Baseline Policy Test 9: <span class="green-text">Success</span>.
             </p>
           </div>
         </div>
+        <!-- test9 50demos -->
       </div>
     </div>
+    <!-- 50demos -->
+
+
+
+    
     <!-- Real-World All Videos. -->
 
     <!--/ Real-World Validation. -->
