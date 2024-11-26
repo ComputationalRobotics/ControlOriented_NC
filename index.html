@@ -174,7 +174,7 @@
 
 <!-- Overview. -->
 <div class="content is-centered is-full-width has-text-centered">
-  <img src="./static/images/nc-overview.png" width="60%">
+  <img src="./static/images/nc-overview.png" width="40%">
 </div>
 <!-- Overview. -->
 
@@ -186,25 +186,23 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We initiate a study of the geometry of the visual representation space --the information 
-            channel from the vision encoder to the action decoder-- in an image-based control pipeline 
+            We initiate a study of the geometry of the visual representation space &#x2014;the information 
+            channel from the vision encoder to the action decoder&#x2014; in an image-based control pipeline 
             learned from behavior cloning. Inspired by the phenomenon of <em>neural collapse</em> (NC) in 
             image classification <a href="https://arxiv.org/abs/2008.08186">(Papyan et al., 2020)</a>, we 
-            investigate whether a similar <em>law of clustering</em> emerges in the visual representation space. 
-            Since image-based control is a regression task without explicitly defined classes, the central piece 
-            of the puzzle lies in determining according to what <em>implicit classes</em> the visual features 
-            cluster, if such a law exists.
-          </p>
-          <p>
-            Focusing on image-based <em>planar pushing</em>, we posit the most important role of the visual 
-            representation in a control task is to <em>convey a goal</em> to the action decoder; for instance, 
-            <q>rotate the object clockwise and push it northeast</q>. We then classify training samples of expert 
-            demonstrations into eight <q><em>control-oriented </em></q> classes --based on (a) the relative pose 
-            between the object and the target in the input or (b) the relative pose of the object induced by expert 
-            actions in the output-- where one class corresponds to one <em>relative pose orthant</em> 
-            (<span class="dnerf">Repo</span>s). Across four different instantiations of the vision-based control 
-            architecture, we report the prevalent emergence of control-oriented clustering (similar to NC) in the 
-            visual representation space according to the eight <span class="dnerf">Repo</span>s. 
+            empirically demonstrate the prevalent emergence of a similar <em>law of clustering</em> in the visual
+            representation space. Specifically,
+            <ul>
+              <li>In <em>discrete</em> image-based control (e.g., Lunar Lander), the visual representations 
+                cluster according to the natural discrete action labels;
+              </li>
+              <li>In <em>continuous</em> image-based control (e.g., Planar Pushing and Block Stacking), 
+                the clustering emerges according to <q><em>control-oriented</em></q> classes that are based on 
+                (a) the relative pose between the object and the target in the input or (b) the relative pose 
+                of the object induced by expert actions in the output. Each of the classes corresponds to one 
+                <em>relative pose orthant</em> (<span class="dnerf">Repo</span>).
+              </li>
+            </ul>
           </p>
           <p>
             Beyond empirical observation, we show such a law of clustering can be leveraged as an 
@@ -338,7 +336,7 @@
       <div class="column">
         <div class="content">
           <video id="sample1" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_8.mp4"
+            <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos/real_eval_100demos_NC_encouraged_demo_8.mp4"
                     type="video/mp4">
           </video>
           <p>
@@ -350,7 +348,7 @@
       <div class="column">
         <div class="content">
           <video id="sample2" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_8.mp4"
+            <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos/real_eval_100demos_baseline_demo_8.mp4"
                     type="video/mp4">
           </video>
           <p>
@@ -389,7 +387,7 @@
           <div class="column is-centered">
             <div class="content has-text-centered">
               <video id="real_eval_100demos_nc_encoraged_0" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_0.mp4"
+                <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos/real_eval_100demos_NC_encouraged_demo_0.mp4"
                         type="video/mp4">
               </video>
               <p>
@@ -400,7 +398,7 @@
           <div class="column is-centered" style="margin-right: 15px;">
             <div class="content has-text-centered">
               <video id="real_eval_100demos_baseline_0" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_0.mp4"
+                <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos/real_eval_100demos_baseline_demo_0.mp4"
                         type="video/mp4">
               </video>
               <p>
@@ -414,7 +412,7 @@
           <div class="column is-centered" style="margin-left: 15px;">
             <div class="content has-text-centered">
               <video id="real_eval_100demos_nc_encoraged_1" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_1.mp4"
+                <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos/real_eval_100demos_NC_encouraged_demo_1.mp4"
                         type="video/mp4">
               </video>
               <p>
@@ -425,7 +423,7 @@
           <div class="column is-centered">
             <div class="content has-text-centered">
               <video id="real_eval_100demos_baseline_1" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_1.mp4"
+                <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos/real_eval_100demos_baseline_demo_1.mp4"
                         type="video/mp4">
               </video>
               <p>
@@ -441,7 +439,7 @@
         <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_nc_encoraged_2" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_2.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos/real_eval_100demos_NC_encouraged_demo_2.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -452,7 +450,7 @@
         <div class="column is-centered" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_2" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_2.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos/real_eval_100demos_baseline_demo_2.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -466,7 +464,7 @@
         <div class="column is-centered" style="margin-left: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_nc_encoraged_3" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_3.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos/real_eval_100demos_NC_encouraged_demo_3.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -477,7 +475,7 @@
         <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_3" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_3.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos/real_eval_100demos_baseline_demo_3.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -493,7 +491,7 @@
         <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_nc_encoraged_4" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_4.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos/real_eval_100demos_NC_encouraged_demo_4.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -504,7 +502,7 @@
         <div class="column is-centered" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_4" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_4.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos/real_eval_100demos_baseline_demo_4.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -518,7 +516,7 @@
         <div class="column is-centered representative" style="margin-left: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_nc_encoraged_5" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_5.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos/real_eval_100demos_NC_encouraged_demo_5.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -529,7 +527,7 @@
         <div class="column is-centered representative">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_5" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_5.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos/real_eval_100demos_baseline_demo_5.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -545,7 +543,7 @@
         <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_nc_encoraged_6" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_6.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos/real_eval_100demos_NC_encouraged_demo_6.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -556,7 +554,7 @@
         <div class="column is-centered" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_6" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_6.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos/real_eval_100demos_baseline_demo_6.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -570,7 +568,7 @@
         <div class="column is-centered" style="margin-left: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_nc_encoraged_7" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_7.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos/real_eval_100demos_NC_encouraged_demo_7.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -581,7 +579,7 @@
         <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_7" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_7.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos/real_eval_100demos_baseline_demo_7.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -597,7 +595,7 @@
         <div class="column is-centered representative">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_nc_encoraged_8" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_8.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos/real_eval_100demos_NC_encouraged_demo_8.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -608,7 +606,7 @@
         <div class="column is-centered representative" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_8" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_8.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos/real_eval_100demos_baseline_demo_8.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -622,7 +620,7 @@
         <div class="column is-centered representative" style="margin-left: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_nc_encoraged_9" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos_web/real_eval_100demos_NC_encouraged_demo_9.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_NC_encouraged_videos/real_eval_100demos_NC_encouraged_demo_9.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -633,7 +631,7 @@
         <div class="column is-centered representative">
           <div class="content has-text-centered">
             <video id="real_eval_100demos_baseline_9" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos_web/real_eval_100demos_baseline_demo_9.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_100demos_baseline_videos/real_eval_100demos_baseline_demo_9.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -659,7 +657,7 @@
           <div class="column is-centered">
             <div class="content has-text-centered">
               <video id="real_eval_50demos_nc_encoraged_0" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_0.mp4"
+                <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos/real_eval_50demos_NC_encouraged_demo_0.mp4"
                         type="video/mp4">
               </video>
               <p>
@@ -670,7 +668,7 @@
           <div class="column is-centered" style="margin-right: 15px;">
             <div class="content has-text-centered">
               <video id="real_eval_50demos_baseline_0" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_0.mp4"
+                <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos/real_eval_50demos_baseline_demo_0.mp4"
                         type="video/mp4">
               </video>
               <p>
@@ -684,7 +682,7 @@
           <div class="column is-centered representative" style="margin-left: 15px;">
             <div class="content has-text-centered">
               <video id="real_eval_50demos_nc_encoraged_1" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_1.mp4"
+                <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos/real_eval_50demos_NC_encouraged_demo_1.mp4"
                         type="video/mp4">
               </video>
               <p>
@@ -695,7 +693,7 @@
           <div class="column is-centered representative">
             <div class="content has-text-centered">
               <video id="real_eval_50demos_baseline_1" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_1.mp4"
+                <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos/real_eval_50demos_baseline_demo_1.mp4"
                         type="video/mp4">
               </video>
               <p>
@@ -711,7 +709,7 @@
         <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_nc_encoraged_2" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_2.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos/real_eval_50demos_NC_encouraged_demo_2.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -722,7 +720,7 @@
         <div class="column is-centered" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_2" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_2.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos/real_eval_50demos_baseline_demo_2.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -736,7 +734,7 @@
         <div class="column is-centered" style="margin-left: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_nc_encoraged_3" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_3.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos/real_eval_50demos_NC_encouraged_demo_3.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -747,7 +745,7 @@
         <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_3" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_3.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos/real_eval_50demos_baseline_demo_3.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -763,7 +761,7 @@
         <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_nc_encoraged_4" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_4.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos/real_eval_50demos_NC_encouraged_demo_4.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -774,7 +772,7 @@
         <div class="column is-centered" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_4" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_4.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos/real_eval_50demos_baseline_demo_4.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -788,7 +786,7 @@
         <div class="column is-centered" style="margin-left: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_nc_encoraged_5" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_5.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos/real_eval_50demos_NC_encouraged_demo_5.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -799,7 +797,7 @@
         <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_5" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_5.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos/real_eval_50demos_baseline_demo_5.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -815,7 +813,7 @@
         <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_nc_encoraged_6" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_6.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos/real_eval_50demos_NC_encouraged_demo_6.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -826,7 +824,7 @@
         <div class="column is-centered" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_6" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_6.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos/real_eval_50demos_baseline_demo_6.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -840,7 +838,7 @@
         <div class="column is-centered representative" style="margin-left: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_nc_encoraged_7" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_7.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos/real_eval_50demos_NC_encouraged_demo_7.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -851,7 +849,7 @@
         <div class="column is-centered representative">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_7" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_7.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos/real_eval_50demos_baseline_demo_7.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -867,7 +865,7 @@
         <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_nc_encoraged_8" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_8.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos/real_eval_50demos_NC_encouraged_demo_8.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -878,7 +876,7 @@
         <div class="column is-centered" style="margin-right: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_8" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_8.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos/real_eval_50demos_baseline_demo_8.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -892,7 +890,7 @@
         <div class="column is-centered" style="margin-left: 15px;">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_nc_encoraged_9" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos_web/real_eval_50demos_NC_encouraged_demo_9.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_NC_encouraged_videos/real_eval_50demos_NC_encouraged_demo_9.mp4"
                       type="video/mp4">
             </video>
             <p>
@@ -903,7 +901,7 @@
         <div class="column is-centered">
           <div class="content has-text-centered">
             <video id="real_eval_50demos_baseline_9" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos_web/real_eval_50demos_baseline_demo_9.mp4"
+              <source src="./static/videos/real_world_video_web/real_eval_50demos_baseline_videos/real_eval_50demos_baseline_demo_9.mp4"
                       type="video/mp4">
             </video>
             <p>
