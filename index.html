@@ -30,7 +30,7 @@
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <!-- <script src="./static/js/index.js"></script> -->
 </head>
 <body>
 
@@ -315,24 +315,27 @@
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Real-World Validation. -->
-    <h2 class="title is-3">Real-World Validation</h2>
+    <h2 class="title is-3">Real-world Validation</h2>
 
-    <h3 class="title is-4">Example Evaluation Result</h3>
+    <h3 class="title is-4">Example evaluation result #1 (on clean background):</h3>
+
+    <!-- Real-World Example Trajectory. -->
     <div class="columns is-centered">
       <div class="column">
-        <div class="content is-centered has-text-centered">
+        <div class="content is-centered has-text-centered" style="margin-bottom: 0px;">
           <img src="./static/images/real_100demos_nc_encouraged_eval_demo_8_traj.png" height="100%" alt="real_sample_nc_encouraged_traj">
-          <p>(Ours) Real-world evaluation trajectory of test 8 for <b>NC-pretrained</b> policy trained under 100 demos.</p>
+          <p>(Ours) Test 8 trajectory for <b>NC-pretrained</b> policy on <b>clean background</b>, trained under 100 demos.</p>
         </div>
         <div class="content is-centered has-text-centered">
           <img src="./static/images/real_100demos_baseline_eval_demo_8_traj.png" height="100%" alt="real_sample_baseline_traj">
-          <p>Real-world evaluation trajectory of test 8 for <b>baseline</b> policy trained under 100 demos.</p>
+          <p>Test 8 trajectory for <b>baseline</b> policy on <b>clean background</b>, trained under 100 demos.</p>
         </div>
       </div>
     </div>
+    <!-- Real-World Example Trajectory. -->
 
     <!-- Real-World Example Video. -->
-    <div class="columns is-centered">
+    <div class="columns is-centered" style="margin-bottom: 40px;">
       <div class="column">
         <div class="content">
           <video id="sample1" autoplay controls muted loop playsinline height="100%">
@@ -340,7 +343,7 @@
                     type="video/mp4">
           </video>
           <p>
-            (Ours) Real-world evaluation video of test 8 for <b>NC-pretrained</b> policy trained under 100 demos. <span class="green-text">Success</span>.
+            (Ours) Test 8 for <b>NC-pretrained</b> policy on <b>clean background</b>, trained under 100 demos. <span class="green-text">Success</span>.
           </p>
         </div>
       </div>
@@ -352,16 +355,61 @@
                     type="video/mp4">
           </video>
           <p>
-            Real-world evaluation video of test 8 for <b>baseline</b> policy trained under 100 demos. <span class="red-text">Failure</span>.
+            Test 8 for <b>baseline</b> policy on <b>clean background</b>, trained under 100 demos. <span class="red-text">Failure</span>.
           </p>
         </div>
       </div>
     </div>
     <!-- Real-World Example Video. -->
+    
+    <h3 class="title is-4">Example evaluation result #2 (on visually complex background):</h3>
+
+    <!-- Real-World Example Trajectory (complex). -->
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content is-centered has-text-centered" style="margin-bottom: 0px;">
+          <img src="./static/images/real_complex_200demos_nc_encouraged_eval_demo_8_traj.png" height="100%" alt="real_sample_nc_encouraged_traj">
+          <p>(Ours) Test 8 trajectory for <b>NC-pretrained</b> policy on <b>visually complex background</b>, trained under 200 demos.</p>
+        </div>
+        <div class="content is-centered has-text-centered">
+          <img src="./static/images/real_complex_200demos_baseline_eval_demo_8_traj.png" height="100%" alt="real_sample_baseline_traj">
+          <p>Test 8 trajectory for <b>baseline</b> policy on <b>visually complex background</b>, trained under 200 demos.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Real-World Example Trajectory (complex). -->
+
+    <!-- Real-World Example Video (complex). -->
+    <div class="columns is-centered" style="margin-bottom: 40px;">
+      <div class="column">
+        <div class="content">
+          <video id="sample1_complex" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_NC_encouraged_videos/rebuttal_real_eval_200demos_NC_encouraged_demo_8.mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+            (Ours) Test 8 for <b>NC-pretrained</b> policy on <b>visually complex background</b>, trained under 200 demos. <span class="green-text">Success</span>.
+          </p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="content">
+          <video id="sample2_complex" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_baseline_videos/rebuttal_real_eval_200demos_baseline_demo_8.mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+            Test 8 for <b>baseline</b> policy on <b>visually complex background</b>, trained under 200 demos. <span class="red-text">Failure</span>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Real-World Example Video (complex). -->
 
     <!-- Real-World All Videos. -->
     <h3 class="title is-4">
-      Check all real-world evalutaion results (by clicking the title):
+      Check all real-world evalutaion results (by clicking the titles):
     </h3>
     <div class="content has-text-justified">
       <p>
@@ -374,13 +422,13 @@
     </div>
     
 
+    <!-- 100demos -->
     <h4 class="title is-5">
       <a data-bs-toggle="collapse" href="#100-all">
-        (Ours) NC-pretrained (8 out of 10) vs. Baseline (5 out of 10) policy trained under 100 demos
+        (Ours) NC-pretrained (8 out of 10) vs. Baseline (5 out of 10) policy on clean background, trained under 100 demos
       </a>
     </h4>
 
-    <!-- 100demos -->
     <div class="collapse" id="100-all" style="margin-bottom: 40px;">
       <div class="columns">
           <!-- test0 100demos -->
@@ -644,13 +692,13 @@
     </div>
     <!-- 100demos -->
 
+    <!-- 50demos -->
     <h4 class="title is-5">
       <a data-bs-toggle="collapse" href="#50-all">
-        (Ours) NC-pretrained (4 out of 10) vs. Baseline (2 out of 10) policy trained under 50 demos
+        (Ours) NC-pretrained (4 out of 10) vs. Baseline (2 out of 10) policy on clean background, trained under 50 demos
       </a>
     </h4>
 
-    <!-- 50demos -->
     <div class="collapse" id="50-all" style="margin-bottom: 20px;">
       <div class="columns">
           <!-- test0 50demos -->
@@ -914,6 +962,275 @@
     </div>
     <!-- 50demos -->
 
+    <!-- 200demos Complex -->
+    <h4 class="title is-5">
+      <a data-bs-toggle="collapse" href="#200-complex-all">
+        (Ours) NC-pretrained (9 out of 10) vs. Baseline (6 out of 10) policy on visually complex background, trained under 200 demos
+      </a>
+    </h4>
+
+    <div class="collapse" id="200-complex-all" style="margin-bottom: 40px;">
+      <div class="columns">
+          <!-- test0 200demos complex -->
+          <div class="column is-centered representative">
+            <div class="content has-text-centered">
+              <video id="real_eval_200demos_complex_nc_encoraged_0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_NC_encouraged_videos/rebuttal_real_eval_200demos_NC_encouraged_demo_0.mp4"
+                        type="video/mp4">
+              </video>
+              <p>
+                NC-pretrained Policy Test 0: <span class="green-text">Success</span>.
+              </p>
+            </div>
+          </div>
+          <div class="column is-centered representative" style="margin-right: 15px;">
+            <div class="content has-text-centered">
+              <video id="real_eval_200demos_complex_baseline_0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_baseline_videos/rebuttal_real_eval_200demos_baseline_demo_0.mp4"
+                        type="video/mp4">
+              </video>
+              <p>
+                Baseline Policy Test 0: <span class="red-text">Failure</span>.
+              </p>
+            </div>
+          </div>
+          <!-- test0 200demos complex -->
+
+          <!-- test1 200demos complex -->
+          <div class="column is-centered" style="margin-left: 15px;">
+            <div class="content has-text-centered">
+              <video id="real_eval_200demos_complex_nc_encoraged_1" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_NC_encouraged_videos/rebuttal_real_eval_200demos_NC_encouraged_demo_1.mp4"
+                        type="video/mp4">
+              </video>
+              <p>
+                NC-pretrained Policy Test 1: <span class="green-text">Success</span>.
+              </p>
+            </div>
+          </div> 
+          <div class="column is-centered">
+            <div class="content has-text-centered">
+              <video id="real_eval_200demos_complex_baseline_1" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_baseline_videos/rebuttal_real_eval_200demos_baseline_demo_1.mp4"
+                        type="video/mp4">
+              </video>
+              <p>
+                Baseline Policy Test 1: <span class="green-text">Success</span>.
+              </p>
+            </div>
+          </div>
+          <!-- test1 200demos complex -->
+      </div>
+
+      <div class="columns">
+        <!-- test2 200demos complex -->
+        <div class="column is-centered">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_nc_encoraged_2" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_NC_encouraged_videos/rebuttal_real_eval_200demos_NC_encouraged_demo_2.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 2: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div>
+        <div class="column is-centered" style="margin-right: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_baseline_2" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_baseline_videos/rebuttal_real_eval_200demos_baseline_demo_2.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              Baseline Policy Test 2: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div>
+        <!-- test2 200demos complex -->
+
+        <!-- test3 200demos complex -->
+        <div class="column is-centered representative" style="margin-left: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_nc_encoraged_3" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_NC_encouraged_videos/rebuttal_real_eval_200demos_NC_encouraged_demo_3.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 3: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div> 
+        <div class="column is-centered representative">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_baseline_3" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_baseline_videos/rebuttal_real_eval_200demos_baseline_demo_3.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              Baseline Policy Test 3: <span class="red-text">Failure</span>.
+            </p>
+          </div>
+        </div>
+        <!-- test3 200demos complex -->
+      </div>
+
+      <div class="columns">
+        <!-- test4 200demos complex -->
+        <div class="column is-centered">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_nc_encoraged_4" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_NC_encouraged_videos/rebuttal_real_eval_200demos_NC_encouraged_demo_4.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 4: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div>
+        <div class="column is-centered" style="margin-right: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_baseline_4" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_baseline_videos/rebuttal_real_eval_200demos_baseline_demo_4.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              Baseline Policy Test 4: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div>
+        <!-- test4 200demos complex -->
+
+        <!-- test5 200demos complex -->
+        <div class="column is-centered" style="margin-left: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_nc_encoraged_5" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_NC_encouraged_videos/rebuttal_real_eval_200demos_NC_encouraged_demo_5.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 5: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div> 
+        <div class="column is-centered">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_baseline_5" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_baseline_videos/rebuttal_real_eval_200demos_baseline_demo_5.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              Baseline Policy Test 5: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div>
+        <!-- test5 200demos complex -->
+      </div>
+
+      <div class="columns">
+        <!-- test6 200demos complex -->
+        <div class="column is-centered">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_nc_encoraged_6" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_NC_encouraged_videos/rebuttal_real_eval_200demos_NC_encouraged_demo_6.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 6: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div>
+        <div class="column is-centered" style="margin-right: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_baseline_6" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_baseline_videos/rebuttal_real_eval_200demos_baseline_demo_6.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              Baseline Policy Test 6: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div>
+        <!-- test6 200demos complex -->
+
+        <!-- test7 200demos complex -->
+        <div class="column is-centered" style="margin-left: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_nc_encoraged_7" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_NC_encouraged_videos/rebuttal_real_eval_200demos_NC_encouraged_demo_7.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 7: <span class="red-text">Failure</span>.
+            </p>
+          </div>
+        </div> 
+        <div class="column is-centered">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_baseline_7" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_baseline_videos/rebuttal_real_eval_200demos_baseline_demo_7.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              Baseline Policy Test 7: <span class="red-text">Failure</span>.
+            </p>
+          </div>
+        </div>
+        <!-- test7 200demos complex -->
+      </div>
+
+      <div class="columns">
+        <!-- test8 200demos complex -->
+        <div class="column is-centered representative">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_nc_encoraged_8" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_NC_encouraged_videos/rebuttal_real_eval_200demos_NC_encouraged_demo_8.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 8: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div>
+        <div class="column is-centered representative" style="margin-right: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_baseline_8" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_baseline_videos/rebuttal_real_eval_200demos_baseline_demo_8.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              Baseline Policy Test 8: <span class="red-text">Failure</span>.
+            </p>
+          </div>
+        </div>
+        <!-- test8 200demos complex -->
+
+        <!-- test9 200demos complex -->
+        <div class="column is-centered" style="margin-left: 15px;">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_nc_encoraged_9" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_NC_encouraged_videos/rebuttal_real_eval_200demos_NC_encouraged_demo_9.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              NC-pretrained Policy Test 9: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div> 
+        <div class="column is-centered">
+          <div class="content has-text-centered">
+            <video id="real_eval_200demos_complex_baseline_9" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/real_world_video_web/rebuttal_real_eval_200demos_baseline_videos/rebuttal_real_eval_200demos_baseline_demo_9.mp4"
+                      type="video/mp4">
+            </video>
+            <p>
+              Baseline Policy Test 9: <span class="green-text">Success</span>.
+            </p>
+          </div>
+        </div>
+        <!-- test9 200demos complex -->
+      </div>
+    </div>
+    <!-- 200demos -->
 
 
     
