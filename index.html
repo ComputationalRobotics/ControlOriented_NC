@@ -245,33 +245,10 @@
         </ol>
       </p>
     </div>
+
     
     <!-- Simulated Eval. -->
-    <h2 class="title is-3">Control-oriented Neural Collapse in Vision-based Control</h2>
-    <!-- <div class="content has-text-justified">
-      <p>
-        text here.
-      </p>
-    </div> -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-          <div class="content is-4 has-text-centered">
-            <img src="static/images/sim_domain_18_seed_81.webp" width="70%" alt="sim_sample_video">
-            <p>Evaluation example demo for the last (300<sup>th</sup>) training epoch</p>
-          </div>
-        <!--/ Simulated Eval. -->
-      </div>
-
-      <div class="column is-full-width">
-        <div class="content is-4 has-text-centered">
-          <img src="./static/images/sim_domain18_resnet_diffusion_score.png" width="93.4%" alt="sim_score">
-          <p>Evaluation score w.r.t. training epoches</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- NC Performance Metrics. -->
-    <!-- <h3 class="title is-4">NC Performance Metrics</h3> -->
+    <h2 class="title is-3">Neural Collapse in Vision-based Control</h2>
     <div class="content has-text-justified">
       <p>
         We evaluate <b>(NC1)</b> using the <em>class-distance normalized variance</em> 
@@ -280,29 +257,213 @@
         cluster mean vectors. We do not evaluate <b>(NC3)</b> and <b>(NC4)</b> because they 
         require a linear classifier from the representation space to the output, which does 
         not hold in our vision-based control setup. For comprehensive details, including 
-        the mathematical definitions of all three metrics, please refer to Section 3 of 
+        the mathematical definitions of all three metrics, please refer to Section 2 & 3 in 
         the paper.
       </p>
     </div>
+
+    <h3 class="title is-4">Discrete Vision-based Control</h3>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-centered">
+          <video id="sample_lunar_lander" autoplay controls muted loop playsinline width="50%" style="border: 2px solid black">
+            <source src="./static/videos/sample_lunar_lander_demo.mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+            Sample demo for Lunar Lander.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content has-text-justified">
+      <p>
+        The Lunar Lander task is an environment in <a href="https://www.gymlibrary.dev/environments/box2d/lunar_lander/">OpenAI Gym</a>, whose control
+        space is discrete with 4 actions:
+        <ul>
+          <li> 0: do nothing </li>
+          <li> 1: fire left orientation engine </li>
+          <li> 2: fire main engine </li>
+          <li> 3: fire right orientation engine </li>
+        </ul>
+        Since the action space for Lunar Lander is discrete with 4 actions, we directly study the 
+        clustering phenomenon of the latent features according to these 4 actions. We observe consistent 
+        decrease of three NC metrics as training progresses, and all of them approach zero at the end of training, 
+        suggesting strong control-oriented clustering in the visual representation space.
+      </p>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content is-3 has-text-centered">
+          <img src="./static/images/lunar_landing_nc1.png" height="100%" alt="lunarlander_nc1">
+          <p><b>(NC1)</b> for Lunar Lander. <br>Class-Distance Normalized Variance</p>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="content is-3 has-text-centered">
+          <img src="./static/images/lunar_landing_nc2angle.png" height="100%" alt="lunarlander_nc2angle">
+          <p><b>(NC2-1)</b> for Lunar Lander. <br>Standard Deviation of Angle Spanned by Cluster Mean Vectors</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="content is-3 has-text-centered">
+          <img src="./static/images/lunar_landing_nc2norm.png" height="100%" alt="lunarlander_nc2norm">
+          <p><b>(NC2-2)</b> for Lunar Lander. <br>Standard Deviation of Length of Cluster Mean Vectors</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="title is-4">Continuous Vision-based Control</h3>
+ 
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-centered">
+          <video id="sample_lunar_lander" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/sample_pusht_demo.mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+            Sample demo for Planar Pushing on clean background.
+          </p>
+        </div>
+      </div>
+      <div class="column is-full-width">
+        <div class="content has-text-centered">
+          <video id="sample_lunar_lander" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/sample_pusht_demo_w_linemod.mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+            Sample demo for Planar Pushing on visually complex background.
+          </p>
+        </div>
+      </div>
+      <div class="column is-full-width">
+        <div class="content has-text-centered">
+          <video id="sample_lunar_lander" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/sample_block_stack_d0.mp4"
+                    type="video/mp4">
+          </video>
+          <p>
+            Sample demo for Block Stacking.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content has-text-justified">
+      <p>
+        We now consider continuous vision-based control tasks, where an obvious set of class labels 
+        does not exist anymore. We focus on two tasks: Planar Pushing and Block Stacking.
+      </p>
+      <p>
+        We design two strategies to classify each training sample: one that is <b><em>goal-based</em></b> and the 
+        other that is <b><em>action-based</em></b>.
+        <ul>
+          <li> <b>Goal-based classification:</b> For each training sample frame, we compute the relative pose of the target position with 
+            respect to the object.
+          </li>
+          <li> <b>Action-based classification:</b> For each training sample frame, we first detect the nearest (either current or future) 
+            action sequence that makes and breaks contact with the object, then compute the relative pose of object between 
+            break-contact frame and make-contact frame.
+          </li>
+        </ul>
+      </p>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content is-centered has-text-centered" style="margin-bottom: 20px;">
+          <img src="./static/images/rpo-PP.jpg" width="75%" alt="rpo-pp">
+          <p>Control-oriented classification for Planar Pushing. Left: goal-based; Right: action-based.</p>
+        </div>
+        <div class="content is-centered has-text-centered">
+          <img src="./static/images/rpo-BS.jpg" width="75%" alt="rpo-bs">
+          <p>Control-oriented classification for Block Stacking. Left: goal-based; Right: action-based.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="content has-text-justified">
+      <p>
+        Using the same NC metrics, we observe a strong control-oriented clustering in the visual representation space
+        for both goal-based and action-based classification methods across Planar Pushing and Block Stacking. Here we 
+        show the curves for goal-based classfication.
+      </p>
+    </div>
+
+    <!-- NC Performance Metrics. -->
+    
     <div class="columns is-centered">
       <div class="column is-full-width">
         <div class="content is-3 has-text-centered">
           <img src="./static/images/sim_domain18_resnet_diffusion_nc1_input_space.png" height="100%" alt="sim_nc1">
-          <p>Class-Distance Normalized Variance</p>
+          <p><b>(NC1)</b> for Planar Pushing on clean background. <br>Class-Distance Normalized Variance</p>
         </div>
       </div>
       
       <div class="column">
         <div class="content is-3 has-text-centered">
           <img src="./static/images/sim_domain18_resnet_diffusion_nc2angle_input_space.png" height="100%" alt="sim_nc2angle">
-          <p>Standard Deviation of Angle Spanned by Cluster Mean Vectors</p>
+          <p><b>(NC2-1)</b> for Planar Pushing on clean background. <br>Standard Deviation of Angle Spanned by Cluster Mean Vectors</p>
         </div>
       </div>
 
       <div class="column">
         <div class="content is-3 has-text-centered">
           <img src="./static/images/sim_domain18_resnet_diffusion_nc2norm_input_space.png" height="100%" alt="sim_nc2norm">
-          <p>Standard Deviation of Length of Cluster Mean Vectors</p>
+          <p><b>(NC2-2)</b> for Planar Pushing on clean background. <br>Standard Deviation of Length of Cluster Mean Vectors</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content is-3 has-text-centered">
+          <img src="./static/images/sim_domain_18_linemod_input_intention_nc1.png" height="100%" alt="sim_complex_nc1">
+          <p><b>(NC1)</b> for Planar Pushing on visually complex background. <br>Class-Distance Normalized Variance</p>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="content is-3 has-text-centered">
+          <img src="./static/images/sim_domain_18_linemod_input_intention_nc2angle.png" height="100%" alt="sim_complex_nc2angle">
+          <p><b>(NC2-1)</b> for Planar Pushing on visually complex background. <br>Standard Deviation of Angle Spanned by Cluster Mean Vectors</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="content is-3 has-text-centered">
+          <img src="./static/images/sim_domain_18_linemod_input_intention_nc2norm.png" height="100%" alt="sim_complex_nc2norm">
+          <p><b>(NC2-2)</b> for Planar Pushing on visually complex background. <br>Standard Deviation of Length of Cluster Mean Vectors</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content is-3 has-text-centered">
+          <img src="./static/images/stack_nc1.png" height="100%" alt="stack_nc1">
+          <p><b>(NC1)</b> for Block Stacking. <br>Class-Distance Normalized Variance</p>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="content is-3 has-text-centered">
+          <img src="./static/images/stack_nc2_angle.png" height="100%" alt="stack_nc2angle">
+          <p><b>(NC2-1)</b> for Block Stacking. <br>Standard Deviation of Angle Spanned by Cluster Mean Vectors</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="content is-3 has-text-centered">
+          <img src="./static/images/stack_nc2_norm.png" height="100%" alt="stack_nc2norm">
+          <p><b>(NC2-2)</b> for Block Stacking. <br>Standard Deviation of Length of Cluster Mean Vectors</p>
         </div>
       </div>
     </div>
@@ -317,7 +478,7 @@
     <!-- Real-World Validation. -->
     <h2 class="title is-3">Real-world Validation</h2>
 
-    <h3 class="title is-4">Example evaluation result #1 (on clean background):</h3>
+    <h3 class="title is-4">Example evaluation result #1 (clean background)</h3>
 
     <!-- Real-World Example Trajectory. -->
     <div class="columns is-centered">
@@ -362,7 +523,7 @@
     </div>
     <!-- Real-World Example Video. -->
     
-    <h3 class="title is-4">Example evaluation result #2 (on visually complex background):</h3>
+    <h3 class="title is-4">Example evaluation result #2 (visually complex background)</h3>
 
     <!-- Real-World Example Trajectory (complex). -->
     <div class="columns is-centered">
@@ -409,7 +570,7 @@
 
     <!-- Real-World All Videos. -->
     <h3 class="title is-4">
-      Check all real-world evalutaion results (by clicking the titles):
+      Check all real-world evalutaion results (by clicking the titles)
     </h3>
     <div class="content has-text-justified">
       <p>
